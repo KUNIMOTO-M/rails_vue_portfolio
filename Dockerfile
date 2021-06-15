@@ -5,15 +5,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
 
-RUN mkdir /rails_project
-WORKDIR /rails_project
+RUN mkdir /rails_vue_portfolio
+WORKDIR /rails_vue_portfolio
 
-RUN mkdir /public2
-ADD Gemfile /rails_project/Gemfile
-ADD Gemfile.lock /rails_project/Gemfile.lock
+ADD Gemfile /rails_vue_portfolio/Gemfile
+ADD Gemfile.lock /rails_vue_portfolio/Gemfile.lock
 
 RUN bundle install
 
-ADD . /rails_project
+ADD . /rails_vue_portfolio
 
 RUN mkdir -p tmp/sockets

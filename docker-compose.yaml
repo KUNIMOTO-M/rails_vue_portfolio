@@ -7,10 +7,10 @@ services:
       - ./.env
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/rails_project
-      - public-data:/rails_project/public2
-      - tmp-data:/rails_project/tmp
-      - log-data:/rails_project/log
+      - .:/rails_vue_portfolio
+      - public-data:/rails_vue_portfolio/public
+      - tmp-data:/rails_vue_portfolio/tmp
+      - log-data:/rails_vue_portfolio/log
     depends_on:
       - db
   db:
@@ -23,8 +23,8 @@ services:
     build:
       context: containers/nginx
     volumes:
-      - public-data:/rails_project/public2
-      - tmp-data:/rails_project/tmp
+      - public-data:/rails_vue_portfolio/public
+      - tmp-data:/rails_vue_portfolio/tmp
     ports:
       - 80:80
     depends_on:
